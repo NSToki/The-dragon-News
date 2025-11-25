@@ -3,6 +3,9 @@ import HomeLayout from "../Layouts/HomeLayout";
 import Home from "../Pages/Home";
 import CategoryNews from "../Pages/CategoryNews";
 import About from "../Pages/About";
+import NewsDetails from "../Pages/NewsDetails";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -34,8 +37,22 @@ const router = createBrowserRouter([
         path: "/*",
         element: <h1>Error 404</h1>,
       },
+      {
+        path:"/news/:id",
+        Component:NewsDetails,
+        loader:()=>fetch("/news.json")
+      }
     ],
+    
   },
+  {
+    path:"/login",
+    Component:Login
+  },
+  {
+    path:"/register",
+    Component:Register
+  }
 ]);
 
 export default router;
